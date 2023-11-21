@@ -93,10 +93,12 @@
 
 
     <article class="comments">
+    {% load lower_filter %}
+    {% load date_filter %}
     {% for c in listing.comments.all reversed%}
-        <section class="comments">
-            <p>{{ c.comment }}</p>
-            <p>Posted by {{c.commentor}} at {{c.created_at}}</p>
+        <section class="comments" style="color: #000000;">
+            <p>{{ c.comment|low }}</p>
+            <p>Posted by {{c.commentor}} {{c.created_at|daysago}}</p>
         </section>
     {% endfor %}
     </article>
